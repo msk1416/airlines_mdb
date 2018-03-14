@@ -53,3 +53,22 @@ insert into PASSENGERS values('Cisco', 'Bates', 445478, 20, 'CAT');
 
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('EUS', 'Euskadi');
 insert into PASSENGERS values('Lucia', 'Guarner', 4225448, 18, 'CAT');
+
+
+insert into AIRLINES values('Ryanair', 'GB', 115588761122);
+insert into AIRLINES values('Norwegian Air', 'NO', 186834633339);
+
+insert into AIRPORTS values('BCN', 'Barcelona-El Prat', 'Barcelona', 'CAT');
+insert into AIRPORTS values('TIA', 'Tribhuban-NP', 'Kathmandu', 'NP');
+insert into AIRPORTS values('WAW', 'Warsaw Chopin', 'Warsaw', 'PL');
+insert into AIRPORTS values('MDI', 'Warsaw Modlin', 'Warsaw', 'PL');
+insert into AIRPORTS values('LCJ', 'Lodz Intl Airport', 'Lodz', 'PL');
+insert into AIRPORTS values('SXF', 'Schonefeld Airport', 'Berlin', 'DE');
+
+
+insert into DISCOUNTS values('STUDENT', 51);
+insert into DISCOUNTS values('CHILD', 80);
+insert into DISCOUNTS values('BABY', 95);
+insert into DISCOUNTS values('W-VETERAN', 60);
+
+
