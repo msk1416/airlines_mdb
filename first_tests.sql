@@ -71,4 +71,19 @@ insert into DISCOUNTS values('CHILD', 80);
 insert into DISCOUNTS values('BABY', 95);
 insert into DISCOUNTS values('W-VETERAN', 60);
 
+insert into flights values ('ET208', '20.30', 'AMS','WAW', 'ET_AIR','BNG 737', '180$');
+insert into flights values ('AT404', '21.30', 'ROM','PAR', 'AM_AIR','BNG 787', '200$');
+insert into flights values ('RY900', '18.30', 'UKR','BAR', 'RY_AIR','BNG 777', '300$');
+insert into flights values ('ES922', '23.30', 'MAD','WAW', 'ES_AIR','AIRB 320', '330$');
+insert into flights values ('ET340', '05.30', 'BAR','BER', 'ET_AIR','BNG 787', '255$');
+
+
+
+insert into bookings values ('902380', 'AT404','200','22' );
+insert into bookings values ('151632', 'ET208','300','26' );
+insert into bookings values ('4411556', 'RY900','500','33' );
+insert into bookings values ('48666411', 'ES922','400','41' );
+insert into bookings values ('0033115', 'ET340','100','11' );
+
+
 
