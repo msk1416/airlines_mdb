@@ -43,6 +43,7 @@ update NATIONALITIES set SHORT_NAME='GB' where SHORT_NAME='UK';
 update NATIONALITIES set SHORT_NAME='CN' where SHORT_NAME='CH';
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CH', 'Switzerland');
 
+insert into PASSENGERS values('Sergi', 'Mascaro', 47331569, 22, 'CAT');
 insert into PASSENGERS values('Avizzit', 'Karn', 902380, 22, 'NP');
 insert into PASSENGERS values('Ruben', 'Oliva', 4411556, 24, 'ES');
 insert into PASSENGERS values('Kuba', 'PolskiLastName', 151632, 23, 'PL');
@@ -57,6 +58,11 @@ insert into PASSENGERS values('Lucia', 'Guarner', 4225448, 18, 'CAT');
 
 insert into AIRLINES values('Ryanair', 'GB', 115588761122);
 insert into AIRLINES values('Norwegian Air', 'NO', 186834633339);
+insert into AIRLINES values('Iberia','ES', 661499777);
+insert into AIRLINES values('Lot Polish Airlines','PL', 63322944113);
+insert into AIRLINES values('Wizz Air','PL', 110224163);
+insert into AIRLINES values('Air France','FR', 22669967);
+insert into AIRLINES values('KLM','NL', 118515463);
 
 insert into AIRPORTS values('BCN', 'Barcelona-El Prat', 'Barcelona', 'CAT');
 insert into AIRPORTS values('TIA', 'Tribhuban-NP', 'Kathmandu', 'NP');
@@ -64,19 +70,28 @@ insert into AIRPORTS values('WAW', 'Warsaw Chopin', 'Warsaw', 'PL');
 insert into AIRPORTS values('MDI', 'Warsaw Modlin', 'Warsaw', 'PL');
 insert into AIRPORTS values('LCJ', 'Lodz Intl Airport', 'Lodz', 'PL');
 insert into AIRPORTS values('SXF', 'Schonefeld Airport', 'Berlin', 'DE');
-
+insert into AIRPORTS values('BIO', 'Aeropuerto de Bilbao', 'Bilbao', 'EUS');
+insert into AIRPORTS values('CDT', 'Castellon de la Plana', 'Castellon de la Plana', 'ES');
+insert into AIRPORTS values('VXO', 'Vaxjo-Smaland', 'Vaxjo', 'SE');
+insert into AIRPORTS values('TOS', 'Tromso-Langnes', 'Tromso', 'NO');
+insert into AIRPORTS values('RKV', 'Reykjavik Airport', 'Reykjavik', 'IS');
+insert into AIRPORTS values('KEF', 'Keflavik Intl Airport', 'Reykjavik', 'IS');
 
 insert into DISCOUNTS values('STUDENT', 51);
 insert into DISCOUNTS values('CHILD', 80);
 insert into DISCOUNTS values('BABY', 95);
 insert into DISCOUNTS values('W-VETERAN', 60);
+insert into DISCOUNTS values('-', 0);
 
-insert into flights values ('ET208', '20.30', 'AMS','WAW', 'ET_AIR','BNG 737', '180$');
-insert into flights values ('AT404', '21.30', 'ROM','PAR', 'AM_AIR','BNG 787', '200$');
-insert into flights values ('RY900', '18.30', 'UKR','BAR', 'RY_AIR','BNG 777', '300$');
-insert into flights values ('ES922', '23.30', 'MAD','WAW', 'ES_AIR','AIRB 320', '330$');
-insert into flights values ('ET340', '05.30', 'BAR','BER', 'ET_AIR','BNG 787', '255$');
-
+insert into flights values ('ET208', '20.30', 'AMS','WAW', 'Ryanair','BNG 737', '180');
+insert into flights values ('AT404', '21.30', 'TIA','MDI', 'Ryanair','BNG 787', '200');
+insert into flights values ('RY900', '18.30', 'LCJ','BCN', 'Ryanair','BNG 777', '300');
+insert into flights values ('ES922', '23.30', 'SXF','WAW', 'Vueling','AIRB 320', '330');
+insert into flights values ('ET340', '05.30', 'BCN','SXF', 'Norwegian Air','BNG 787', '255');
+insert into flights values ('WZ877', '10:00', 'LCJ', 'KEF', 'Wizz Air', 'BNG 737', '80');
+insert into flights values ('FR210', '12:30', 'BIO', 'RKV', 'Air France', 'BNG 737', '80');
+insert into flights values ('KL237', '18:00', 'TOS', 'AMS', 'KLM', 'BNG 787', '200');
+insert into flights values ('IB887', '10:00', 'BCN', 'BIO', 'Iberia', 'AIRB 320', '50');
 
 
 insert into bookings values ('902380', 'AT404','200','22' );

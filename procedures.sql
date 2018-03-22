@@ -1,5 +1,5 @@
 
---Procedure that changes the passenger id on a booking
+--Update Proc: Procedure that changes the passenger id on a booking
 set serveroutput on;
 CREATE OR REPLACE PROCEDURE change_passenger (
     old_id IN NUMBER, 
@@ -27,7 +27,7 @@ execute CHANGE_PASSENGER (47331569, '12345', 902380);
 execute CHANGE_PASSENGER (902380, '12345', 77777);
 execute CHANGE_PASSENGER (902380, 'qwer12345', 47331569);
 
---Procedure that adds a flight booking 
+--Add Proc: Procedure that adds a flight booking 
 
 create or replace PROCEDURE book_flight (
     passenger IN bookings.passenger_id%TYPE,
@@ -59,8 +59,31 @@ create or replace PROCEDURE book_flight (
 EXECUTE book_flight(902380, 'RY900', 'STUDENT'); --WILL INSERT
 EXECUTE book_flight(0000 , '12345', 'W-VETERAN'); --WON'T INSERT
 EXECUTE book_flight(33115 , 'N03X15T', 'CHILD'); --WON'T INSERT
+EXECUTE BOOK_FLIGHT(48666411, 'ET340', '-');
+EXECUTE BOOK_FLIGHT(41155478, 'FR210', 'STUDENT');
+EXECUTE BOOK_FLIGHT(3326448, 'FR210', 'STUDENT');
+EXECUTE BOOK_FLIGHT(47331569, 'IB887', 'STUDENT');
+EXECUTE BOOK_FLIGHT(902380, 'KL237', 'CHILD');
+EXECUTE BOOK_FLIGHT(151632, 'KL237', 'W-VETERAN');
+EXECUTE BOOK_FLIGHT(4411556, 'ES922', 'CHILD');
+EXECUTE BOOK_FLIGHT(4411556, 'KL237', 'STUDENT');
+EXECUTE BOOK_FLIGHT(47331569, 'KL237', '-');
+EXECUTE BOOK_FLIGHT(902380, 'IB887', '-');
+EXECUTE BOOK_FLIGHT(4225448, 'RY900', '-');
 
+--Get Proc: Procedure that retrieves a cursor to the flights of a passenger
 
+create or replace procedure getClientsOfFlightCursor (
+    f_no IN BOOKINGS.FLIGHT_NUMBER%TYPE,
+    cur_clients OUT SYS_REFCURSOR )
+    is 
+    begin
+    OPEN cur_clients FOR
+    SELECT * FROM bookings WHERE flight_number = f_no;
+    
+    END;
+    
+    
 --Function that returns certain discount applied to a flight  
 
 create or replace function get_reduced_price (
@@ -76,6 +99,9 @@ from flights where flight_no = flight;
 if SQL%FOUND then
     select percentage into disc_quant
     from discounts where disc_id = disc_title;
+    if disc_quant = NULL then
+        return flight_price;
+    end if;
     return (flight_price * (100 - disc_quant) / 100);
 else 
     dbms_output.put_line('This flight does not exist.');
@@ -100,3 +126,38 @@ begin
     dbms_output.put_line(round(dbms_random.value() * 100));
 end;
 /
+
+--Function that shuffles seat number on 2nd class clients
+--for a selected flight (assuming seats 1 to 20 are reserved for 1st class
+create or replace function shuffle_seats_flight (
+    flight_n IN bookings.flight_number%TYPE)
+    return NUMBER
+    IS
+    cur SYS_REFCURSOR;
+    tmp_client bookings%ROWTYPE;
+    counter NUMBER := 0;
+    BEGIN
+        getClientsOfFlightCursor(flight_n, cur);
+        loop
+            fetch cur into tmp_client;
+            exit when cur%NOTFOUND;
+            if tmp_client.seat_number > 20 then
+                update bookings 
+                set seat_number = round(dbms_random.value() * 100)
+                where passenger_id = tmp_client.passenger_id and
+                      flight_number = tmp_client.flight_number;
+                
+                counter := counter + 1;
+            end if;
+        end loop;
+        close cur;
+        return counter;
+    END;
+    
+--Tests
+    set serveroutput on;
+    BEGIN
+      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('RY900'));
+      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('KL237'));
+      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('ES922'));
+    END;
