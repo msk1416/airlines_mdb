@@ -41,11 +41,11 @@ AFTER UPDATE
 ON BOOKINGS 
 FOR EACH ROW
 BEGIN
-  update passengers
-  set money_spent = money_spent - :OLD.final_price
-  where id = :old.passenger_id;
+  UPDATE PASSENGERS
+  SET MONEY_SPENT = MONEY_SPENT - :OLD.FINAL_PRICE
+  WHERE ID = :OLD.PASSENGER_ID;
   
-  update passengers
-  set money_spent = money_spent + :NEW.final_price
-  where id = :new.passenger_id;
+  UPDATE PASSENGERS
+  SET MONEY_SPENT = MONEY_SPENT + :NEW.FINAL_PRICE
+  WHERE ID = :NEW.PASSENGER_ID;
 END;

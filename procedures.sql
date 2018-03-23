@@ -2,19 +2,19 @@
 
 
 --Update Proc: Procedure that changes the passenger id on a booking
-set serveroutput on;
-CREATE OR REPLACE PROCEDURE change_passenger (
-    old_id IN NUMBER, 
-    flight IN VARCHAR2, 
-    new_id IN NUMBER) IS
+SET SERVEROUTPUT ON;
+CREATE OR REPLACE PROCEDURE CHANGE_PASSENGER (
+    OLD_ID IN NUMBER, 
+    FLIGHT IN VARCHAR2, 
+    NEW_ID IN NUMBER) IS
     
-    row_count   NUMBER;
+    ROW_COUNT   NUMBER;
 BEGIN
-select count(*) into row_count from BOOKINGS where passenger_id=old_id and flight_number=flight;
-IF row_count > 0 THEN
-    select count(*) into row_count from PASSENGERS where id=new_id;
-    IF row_count > 0 THEN
-        update BOOKINGS set passenger_id=new_id where passenger_id=old_id and flight_number=flight;
+SELECT COUNT(*) INTO ROW_COUNT FROM BOOKINGS WHERE PASSENGER_ID=OLD_ID AND FLIGHT_NUMBER=FLIGHT;
+IF ROW_COUNT > 0 THEN
+    SELECT COUNT(*) INTO ROW_COUNT FROM PASSENGERS WHERE ID=NEW_ID;
+    IF ROW_COUNT > 0 THEN
+        UPDATE BOOKINGS SET PASSENGER_ID=NEW_ID WHERE PASSENGER_ID=OLD_ID AND FLIGHT_NUMBER=FLIGHT;
     ELSE
         DBMS_OUTPUT.PUT_LINE('There is no passenger with the supplied id number.');
     END IF;  
@@ -25,10 +25,10 @@ END;
 
 
 --Tests
-execute CHANGE_PASSENGER (47331569, '12345', 902380);
-execute CHANGE_PASSENGER (902380, '12345', 77777);
-execute CHANGE_PASSENGER (902380, 'qwer12345', 47331569);
-execute CHANGE_PASSENGER (151632, 'KL237', 445478);
+EXECUTE CHANGE_PASSENGER (47331569, '12345', 902380);
+EXECUTE CHANGE_PASSENGER (902380, '12345', 77777);
+EXECUTE CHANGE_PASSENGER (902380, 'qwer12345', 47331569);
+EXECUTE CHANGE_PASSENGER (151632, 'KL237', 445478);
 
 
 
@@ -36,34 +36,34 @@ execute CHANGE_PASSENGER (151632, 'KL237', 445478);
 
 --Add Proc: Procedure that adds a flight booking 
 
-create or replace PROCEDURE book_flight (
-    passenger IN bookings.passenger_id%TYPE,
-    flight IN bookings.flight_number%TYPE,
-    disc_title IN discounts.disc_id%TYPE )
+CREATE OR REPLACE PROCEDURE BOOK_FLIGHT (
+    PASSENGER IN BOOKINGS.PASSENGER_ID%TYPE,
+    FLIGHT IN BOOKINGS.FLIGHT_NUMBER%TYPE,
+    DISC_TITLE IN DISCOUNTS.DISC_ID%TYPE )
     IS
-    passenger_found number := 0;
-    flight_found number := 0;
+    PASSENGER_FOUND NUMBER := 0;
+    FLIGHT_FOUND NUMBER := 0;
     BEGIN
-        select count(*) into passenger_found
-        from passengers where id = passenger;
-        select count(*) into flight_found
-        from flights where flight_no = flight;
+        SELECT COUNT(*) INTO PASSENGER_FOUND
+        FROM PASSENGERS WHERE ID = PASSENGER;
+        SELECT COUNT(*) INTO FLIGHT_FOUND
+        FROM FLIGHTS WHERE FLIGHT_NO = FLIGHT;
         
-        if passenger_found + flight_found = 2 then
-            insert into bookings 
-            values (passenger, 
-                    flight, 
-                    get_reduced_price(flight, disc_title),
-                    round(dbms_random.value() * 100)); --random seat no.
-        elsif passenger_found  = 0 then
-            dbms_output.put_line('User with ID = ' || passenger || ' does not exist.');
-        elsif flight_found = 0 then
-            dbms_output.put_line('Flight with number = ' || flight || ' does not exist.');
-        end if;
+        IF PASSENGER_FOUND + FLIGHT_FOUND = 2 THEN
+            INSERT INTO BOOKINGS 
+            VALUES (PASSENGER, 
+                    FLIGHT, 
+                    GET_REDUCED_PRICE(FLIGHT, DISC_TITLE),
+                    ROUND(DBMS_RANDOM.VALUE() * 100)); --random seat no.
+        ELSIF PASSENGER_FOUND  = 0 THEN
+            DBMS_OUTPUT.PUT_LINE('User with ID = ' || PASSENGER || ' does not exist.');
+        ELSIF FLIGHT_FOUND = 0 THEN
+            DBMS_OUTPUT.PUT_LINE('Flight with number = ' || FLIGHT || ' does not exist.');
+        END IF;
     END;
 
 --Tests
-EXECUTE book_flight(902380, 'RY900', 'STUDENT');
+EXECUTE BOOK_FLIGHT(902380, 'RY900', 'STUDENT');
 EXECUTE BOOK_FLIGHT(48666411, 'ET340', '-');
 EXECUTE BOOK_FLIGHT(41155478, 'FR210', 'STUDENT');
 EXECUTE BOOK_FLIGHT(3326448, 'FR210', 'STUDENT');
@@ -82,96 +82,14 @@ EXECUTE BOOK_FLIGHT(47331569, '12345', '-');
 
 --Get Proc: Procedure that retrieves a cursor to the flights of a passenger
 
-create or replace procedure getClientsOfFlightCursor (
-    f_no IN BOOKINGS.FLIGHT_NUMBER%TYPE,
-    cur_clients OUT SYS_REFCURSOR )
-    is 
-    begin
-    OPEN cur_clients FOR
-    SELECT * FROM bookings WHERE flight_number = f_no;
-    
-    END;
-    
-    
-    
-    
---Function that returns certain discount applied to a flight  
-
-create or replace function get_reduced_price (
-flight IN bookings.flight_number%TYPE,
-disc_title IN discounts.disc_id%TYPE) 
-return NUMBER 
-IS
-flight_price flights.base_price%TYPE := 0;
-disc_quant discounts.percentage%TYPE := 0;
-BEGIN
-select base_price into flight_price
-from flights where flight_no = flight;
-if SQL%FOUND then
-    select percentage into disc_quant
-    from discounts where disc_id = disc_title;
-    if disc_quant = NULL then
-        return flight_price;
-    end if;
-    return (flight_price * (100 - disc_quant) / 100);
-else 
-    dbms_output.put_line('This flight does not exist.');
-    return 0;
-end if;
-END;
-
---Tests
-set SERVEROUTPUT ON
-BEGIN
-  DBMS_OUTPUT.PUT_LINE(get_reduced_price('AT404', 'FREQUENT'));
-  DBMS_OUTPUT.PUT_LINE(get_reduced_price('12345', 'BABY'));
-  DBMS_OUTPUT.PUT_LINE(get_reduced_price('RY900', 'STUDENT'));
-  DBMS_OUTPUT.PUT_LINE(get_reduced_price('ET340', 'W-VETERAN'));
-  DBMS_OUTPUT.PUT_LINE(get_reduced_price('ES922', 'FREQUENT'));
-  --DBMS_OUTPUT.PUT_LINE(get_reduced_price('ES922', 'NONEXIST'));
-  
-END;
-/
-
-begin
-    dbms_output.put_line(round(dbms_random.value() * 100));
-end;
-/
-
-
-
---Function that shuffles seat number on 2nd class clients
---for a selected flight (assuming seats 1 to 20 are reserved for 1st class
-create or replace function shuffle_seats_flight (
-    flight_n IN bookings.flight_number%TYPE)
-    return NUMBER
-    IS
-    cur SYS_REFCURSOR;
-    tmp_client bookings%ROWTYPE;
-    counter NUMBER := 0;
+CREATE OR REPLACE PROCEDURE GETCLIENTSOFFLIGHTCURSOR (
+    F_NO IN BOOKINGS.FLIGHT_NUMBER%TYPE,
+    CUR_CLIENTS OUT SYS_REFCURSOR )
+    IS 
     BEGIN
-        getClientsOfFlightCursor(flight_n, cur);
-        loop
-            fetch cur into tmp_client;
-            exit when cur%NOTFOUND;
-            if tmp_client.seat_number > 20 then
-                update bookings 
-                set seat_number = round(dbms_random.value() * 100)
-                where passenger_id = tmp_client.passenger_id and
-                      flight_number = tmp_client.flight_number;
-                
-                counter := counter + 1;
-            end if;
-        end loop;
-        close cur;
-        return counter;
+    OPEN CUR_CLIENTS FOR
+    SELECT * FROM BOOKINGS WHERE FLIGHT_NUMBER = F_NO;
+    
     END;
     
---Tests
-    set serveroutput on;
-    BEGIN
-      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('RY900'));
-      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('KL237'));
-      DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('ES922'));
-    END;
-    
+   

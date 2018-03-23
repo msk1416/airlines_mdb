@@ -1,7 +1,5 @@
-select * from PASSENGERS;
-select * from nationalities;
 
-insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CAT', 'Catalunya');
+INSERT INTO NATIONALITIES (SHORT_NAME, FULL_NAME) VALUES ('CAT', 'Catalunya');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('ES', 'Spain');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('PL', 'Poland');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('FR', 'France');
@@ -78,22 +76,22 @@ insert into DISCOUNTS values('BABY', 95);
 insert into DISCOUNTS values('W-VETERAN', 60);
 insert into DISCOUNTS values('-', 0);
 
-insert into flights values ('ET208', '20.30', 'AMS','WAW', 'Ryanair','BNG 737', '180');
-insert into flights values ('AT404', '21.30', 'TIA','MDI', 'Ryanair','BNG 787', '200');
-insert into flights values ('RY900', '18.30', 'LCJ','BCN', 'Ryanair','BNG 777', '300');
-insert into flights values ('ES922', '23.30', 'SXF','WAW', 'Vueling','AIRB 320', '330');
-insert into flights values ('ET340', '05.30', 'BCN','SXF', 'Norwegian Air','BNG 787', '255');
-insert into flights values ('WZ877', '10:00', 'LCJ', 'KEF', 'Wizz Air', 'BNG 737', '80');
-insert into flights values ('FR210', '12:30', 'BIO', 'RKV', 'Air France', 'BNG 737', '80');
-insert into flights values ('KL237', '18:00', 'TOS', 'AMS', 'KLM', 'BNG 787', '200');
-insert into flights values ('IB887', '10:00', 'BCN', 'BIO', 'Iberia', 'AIRB 320', '50');
+INSERT INTO FLIGHTS VALUES ('ET208', '20.30', 'AMS','WAW', 'Ryanair','BNG 737', '180');
+INSERT INTO FLIGHTS VALUES ('AT404', '21.30', 'TIA','MDI', 'Ryanair','BNG 787', '200');
+INSERT INTO FLIGHTS VALUES ('RY900', '18.30', 'LCJ','BCN', 'Ryanair','BNG 777', '300');
+INSERT INTO FLIGHTS VALUES ('ES922', '23.30', 'SXF','WAW', 'Vueling','AIRB 320', '330');
+INSERT INTO FLIGHTS VALUES ('ET340', '05.30', 'BCN','SXF', 'Norwegian Air','BNG 787', '255');
+INSERT INTO FLIGHTS VALUES ('WZ877', '10:00', 'LCJ', 'KEF', 'Wizz Air', 'BNG 737', '80');
+INSERT INTO FLIGHTS VALUES ('FR210', '12:30', 'BIO', 'RKV', 'Air France', 'BNG 737', '80');
+INSERT INTO FLIGHTS VALUES ('KL237', '18:00', 'TOS', 'AMS', 'KLM', 'BNG 787', '200');
+INSERT INTO FLIGHTS VALUES ('IB887', '10:00', 'BCN', 'BIO', 'Iberia', 'AIRB 320', '50');
 
 
-insert into bookings values ('902380', 'AT404','200','22' );
-insert into bookings values ('151632', 'ET208','300','26' );
-insert into bookings values ('4411556', 'RY900','500','33' );
-insert into bookings values ('48666411', 'ES922','400','41' );
-insert into bookings values ('0033115', 'ET340','100','11' );
+INSERT INTO BOOKINGS VALUES ('902380', 'AT404','200','22' );
+INSERT INTO BOOKINGS VALUES ('151632', 'ET208','300','26' );
+INSERT INTO BOOKINGS VALUES ('4411556', 'RY900','500','33' );
+INSERT INTO BOOKINGS VALUES ('48666411', 'ES922','400','41' );
+INSERT INTO BOOKINGS VALUES ('0033115', 'ET340','100','11' );
 
 
 
