@@ -42,6 +42,7 @@ update NATIONALITIES set SHORT_NAME='TR' where SHORT_NAME='TK';
 update NATIONALITIES set SHORT_NAME='GB' where SHORT_NAME='UK';
 update NATIONALITIES set SHORT_NAME='CN' where SHORT_NAME='CH';
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CH', 'Switzerland');
+insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('EUS', 'Euskadi');
 
 insert into PASSENGERS values('Sergi', 'Mascaro', 47331569, 22, 'CAT');
 insert into PASSENGERS values('Avizzit', 'Karn', 902380, 22, 'NP');
@@ -49,12 +50,11 @@ insert into PASSENGERS values('Ruben', 'Oliva', 4411556, 24, 'ES');
 insert into PASSENGERS values('Kuba', 'PolskiLastName', 151632, 23, 'PL');
 insert into PASSENGERS values('Omehr', 'TurkishLastName', 0033115, 26, 'TR');
 insert into PASSENGERS values('Naia', 'Ibinarriaga', 48666411, 21, 'EUS');
-
-insert into PASSENGERS values('Cisco', 'Bates', 445478, 20, 'CAT');
-
-insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('EUS', 'Euskadi');
+insert into PASSENGERS values('Miguel', 'Ruiz', 41155478, 20, 'ES');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Cisco', 'Bates', 445478, 20, 'CAT');
+insert into PASSENGERS values('Jony', 'Darko', 3326448, 25, 'ES');
 insert into PASSENGERS values('Lucia', 'Guarner', 4225448, 18, 'CAT');
-
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Dummy', 'Test', 321654, 99, 'IR');
 
 insert into AIRLINES values('Ryanair', 'GB', 115588761122);
 insert into AIRLINES values('Norwegian Air', 'NO', 186834633339);
@@ -101,4 +101,4 @@ insert into bookings values ('48666411', 'ES922','400','41' );
 insert into bookings values ('0033115', 'ET340','100','11' );
 
 
-
+delete from bookings;

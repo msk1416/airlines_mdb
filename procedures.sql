@@ -56,9 +56,7 @@ create or replace PROCEDURE book_flight (
     END;
 
 --Tests
-EXECUTE book_flight(902380, 'RY900', 'STUDENT'); --WILL INSERT
-EXECUTE book_flight(0000 , '12345', 'W-VETERAN'); --WON'T INSERT
-EXECUTE book_flight(33115 , 'N03X15T', 'CHILD'); --WON'T INSERT
+EXECUTE book_flight(902380, 'RY900', 'STUDENT');
 EXECUTE BOOK_FLIGHT(48666411, 'ET340', '-');
 EXECUTE BOOK_FLIGHT(41155478, 'FR210', 'STUDENT');
 EXECUTE BOOK_FLIGHT(3326448, 'FR210', 'STUDENT');
@@ -70,6 +68,7 @@ EXECUTE BOOK_FLIGHT(4411556, 'KL237', 'STUDENT');
 EXECUTE BOOK_FLIGHT(47331569, 'KL237', '-');
 EXECUTE BOOK_FLIGHT(902380, 'IB887', '-');
 EXECUTE BOOK_FLIGHT(4225448, 'RY900', '-');
+EXECUTE BOOK_FLIGHT(47331569, '12345', '-');
 
 --Get Proc: Procedure that retrieves a cursor to the flights of a passenger
 
@@ -161,3 +160,4 @@ create or replace function shuffle_seats_flight (
       DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('KL237'));
       DBMS_OUTPUT.PUT_LINE('count: ' || shuffle_seats_flight('ES922'));
     END;
+    
