@@ -12,21 +12,19 @@ insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('LV', 'Latvia');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('DK', 'Denmark');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('FI', 'Finland');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('DE', 'Germany');
-insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('UK', 'United Kingdom');
+insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('GB', 'United Kingdom');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('IR', 'Ireland');
-
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('SE', 'Sweden');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('IS', 'Iceland');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('MX', 'Mexico');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('PE', 'Peru');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('SK', 'Slovakia');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('RU', 'Russia');
-insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('TK', 'Turkey');
+insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('TR', 'Turkey');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('AD', 'Andorra');
-insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CH', 'China');
+insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CN', 'China');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('JP', 'Japan');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CA', 'Canada');
-
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('LT', 'Lithuania');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('BE', 'Belgium');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('AR', 'Argentina');
@@ -37,24 +35,21 @@ insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('GR', 'Greece');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('MA', 'Morocco');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('NP', 'Nepal');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('ZA', 'South Africa');
-
-update NATIONALITIES set SHORT_NAME='TR' where SHORT_NAME='TK';
-update NATIONALITIES set SHORT_NAME='GB' where SHORT_NAME='UK';
-update NATIONALITIES set SHORT_NAME='CN' where SHORT_NAME='CH';
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CH', 'Switzerland');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('EUS', 'Euskadi');
 
-insert into PASSENGERS values('Sergi', 'Mascaro', 47331569, 22, 'CAT');
-insert into PASSENGERS values('Avizzit', 'Karn', 902380, 22, 'NP');
-insert into PASSENGERS values('Ruben', 'Oliva', 4411556, 24, 'ES');
-insert into PASSENGERS values('Kuba', 'PolskiLastName', 151632, 23, 'PL');
-insert into PASSENGERS values('Omehr', 'TurkishLastName', 0033115, 26, 'TR');
-insert into PASSENGERS values('Naia', 'Ibinarriaga', 48666411, 21, 'EUS');
-insert into PASSENGERS values('Miguel', 'Ruiz', 41155478, 20, 'ES');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Sergi', 'Mascaro', 47331569, 22, 'CAT');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Avizzit', 'Karn', 902380, 22, 'NP');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Ruben', 'Oliva', 4411556, 24, 'ES');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Kuba', 'PolskiLastName', 151632, 23, 'PL');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Omehr', 'TurkishLastName', 0033115, 26, 'TR');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Naia', 'Ibinarriaga', 48666411, 21, 'EUS');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Miguel', 'Ruiz', 41155478, 20, 'ES');
 insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Cisco', 'Bates', 445478, 20, 'CAT');
-insert into PASSENGERS values('Jony', 'Darko', 3326448, 25, 'ES');
-insert into PASSENGERS values('Lucia', 'Guarner', 4225448, 18, 'CAT');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Jony', 'Darko', 3326448, 25, 'ES');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Lucia', 'Guarner', 4225448, 18, 'CAT');
 insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Dummy', 'Test', 321654, 99, 'IR');
+insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Aki', 'Kuressaar', 66599, 35, 'EE');
 
 insert into AIRLINES values('Ryanair', 'GB', 115588761122);
 insert into AIRLINES values('Norwegian Air', 'NO', 186834633339);
@@ -101,4 +96,4 @@ insert into bookings values ('48666411', 'ES922','400','41' );
 insert into bookings values ('0033115', 'ET340','100','11' );
 
 
-delete from bookings;
+

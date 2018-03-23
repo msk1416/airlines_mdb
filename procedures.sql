@@ -1,4 +1,6 @@
 
+
+
 --Update Proc: Procedure that changes the passenger id on a booking
 set serveroutput on;
 CREATE OR REPLACE PROCEDURE change_passenger (
@@ -26,6 +28,11 @@ END;
 execute CHANGE_PASSENGER (47331569, '12345', 902380);
 execute CHANGE_PASSENGER (902380, '12345', 77777);
 execute CHANGE_PASSENGER (902380, 'qwer12345', 47331569);
+execute CHANGE_PASSENGER (151632, 'KL237', 445478);
+
+
+
+
 
 --Add Proc: Procedure that adds a flight booking 
 
@@ -70,6 +77,9 @@ EXECUTE BOOK_FLIGHT(902380, 'IB887', '-');
 EXECUTE BOOK_FLIGHT(4225448, 'RY900', '-');
 EXECUTE BOOK_FLIGHT(47331569, '12345', '-');
 
+
+
+
 --Get Proc: Procedure that retrieves a cursor to the flights of a passenger
 
 create or replace procedure getClientsOfFlightCursor (
@@ -81,6 +91,8 @@ create or replace procedure getClientsOfFlightCursor (
     SELECT * FROM bookings WHERE flight_number = f_no;
     
     END;
+    
+    
     
     
 --Function that returns certain discount applied to a flight  
@@ -125,6 +137,8 @@ begin
     dbms_output.put_line(round(dbms_random.value() * 100));
 end;
 /
+
+
 
 --Function that shuffles seat number on 2nd class clients
 --for a selected flight (assuming seats 1 to 20 are reserved for 1st class
