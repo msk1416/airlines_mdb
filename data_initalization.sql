@@ -35,6 +35,7 @@ insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('NP', 'Nepal');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('ZA', 'South Africa');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('CH', 'Switzerland');
 insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('EUS', 'Euskadi');
+insert into NATIONALITIES (SHORT_NAME, FULL_NAME) values ('NL', 'Netherlands');
 
 insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Sergi', 'Mascaro', 47331569, 22, 'CAT');
 insert into PASSENGERS (FIRST_NAME, LAST_NAME, ID, AGE, NATIONALITY) values('Avizzit', 'Karn', 902380, 22, 'NP');
@@ -56,6 +57,7 @@ insert into AIRLINES values('Lot Polish Airlines','PL', 63322944113);
 insert into AIRLINES values('Wizz Air','PL', 110224163);
 insert into AIRLINES values('Air France','FR', 22669967);
 insert into AIRLINES values('KLM','NL', 118515463);
+insert into AIRLINES values('Vueling', 'ES', 66868684);
 
 insert into AIRPORTS values('BCN', 'Barcelona-El Prat', 'Barcelona', 'CAT');
 insert into AIRPORTS values('TIA', 'Tribhuban-NP', 'Kathmandu', 'NP');
@@ -64,16 +66,18 @@ insert into AIRPORTS values('MDI', 'Warsaw Modlin', 'Warsaw', 'PL');
 insert into AIRPORTS values('LCJ', 'Lodz Intl Airport', 'Lodz', 'PL');
 insert into AIRPORTS values('SXF', 'Schonefeld Airport', 'Berlin', 'DE');
 insert into AIRPORTS values('BIO', 'Aeropuerto de Bilbao', 'Bilbao', 'EUS');
-insert into AIRPORTS values('CDT', 'Castellon de la Plana', 'Castellon de la Plana', 'ES');
+insert into AIRPORTS values('CDT', 'Castellon de la Plana', 'Castellon P.', 'ES');
 insert into AIRPORTS values('VXO', 'Vaxjo-Smaland', 'Vaxjo', 'SE');
 insert into AIRPORTS values('TOS', 'Tromso-Langnes', 'Tromso', 'NO');
 insert into AIRPORTS values('RKV', 'Reykjavik Airport', 'Reykjavik', 'IS');
 insert into AIRPORTS values('KEF', 'Keflavik Intl Airport', 'Reykjavik', 'IS');
+insert into AIRPORTS values('AMS', 'Schipol Intl.', 'Amsterdam', 'NL');
 
 insert into DISCOUNTS values('STUDENT', 51);
 insert into DISCOUNTS values('CHILD', 80);
 insert into DISCOUNTS values('BABY', 95);
 insert into DISCOUNTS values('W-VETERAN', 60);
+insert into DISCOUNTS values('FREQUENT', 30);
 insert into DISCOUNTS values('-', 0);
 
 INSERT INTO FLIGHTS VALUES ('ET208', '20.30', 'AMS','WAW', 'Ryanair','BNG 737', '180');
@@ -91,7 +95,14 @@ INSERT INTO BOOKINGS VALUES ('902380', 'AT404','200','22' );
 INSERT INTO BOOKINGS VALUES ('151632', 'ET208','300','26' );
 INSERT INTO BOOKINGS VALUES ('4411556', 'RY900','500','33' );
 INSERT INTO BOOKINGS VALUES ('48666411', 'ES922','400','41' );
-INSERT INTO BOOKINGS VALUES ('0033115', 'ET340','100','11' );
-
+INSERT INTO BOOKINGS VALUES ('47331569', 'ET340','100','68' );
+INSERT INTO BOOKINGS VALUES ('47331569', 'IB887','200','88' );
+INSERT INTO BOOKINGS VALUES ('902380', 'WZ877','800','12' );
+INSERT INTO BOOKINGS VALUES ('4225448', 'KL237','80','72' );
+INSERT INTO BOOKINGS VALUES ('66599', 'KL237','150','31' );
+INSERT INTO BOOKINGS VALUES ('41155478', 'KL237','120','22' );
+INSERT INTO BOOKINGS VALUES ('48666411', 'AT404','160','74' );
+INSERT INTO BOOKINGS VALUES ('48666411', 'IB887','70','42' );
+INSERT INTO BOOKINGS VALUES ('48666411', 'ET340','100','50' );
 
 

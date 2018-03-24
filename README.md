@@ -7,4 +7,8 @@
    * 4.1. Run GET_REDUCED_PRICE function script in functions.sql file
    * 4.2. Compile procedures.sql file
    * 4.3. Compile SHUFFLE_SEATS_FLIGHT function from functions.sql file
+<<<<<<< HEAD
+=======
+   * 4.4. Run INITIALIZE_NATIONALITIES_COUNTER procedure to initialize inserted data
+>>>>>>> testing-branch
 5. Ready!
