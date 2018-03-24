@@ -1,0 +1,4 @@
+Sergi Mascaro - 902382
+Avizzit Karn - 902380
+
+Database configuration in README.md file
